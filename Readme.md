@@ -1,3 +1,19 @@
+## Before you start
+
+My google cloud application is not published. You can create your own following https://developers.google.com/calendar/api/quickstart/nodejs and using this code instead
+
+Expected folder structure
+
+```
+credentials/
+    credentials.json
+    token.json
+modules/
+    auths.js
+    listEvents.js
+index.js
+```
+
 ## Usage
 `npm run batch 2023-05-09 2023-05-10` to get a single result
 

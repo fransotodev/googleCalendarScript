@@ -1,6 +1,6 @@
 const process = require("process");
-const { authorize } = require("./auth");
-const { listEvents } = require("./listEvents");
+const { authorize } = require("./modules/auth");
+const { listEvents } = require("./modules/listEvents");
 
 function _addDays(date, days) {
   var result = new Date(date);

@@ -1,10 +1,11 @@
 ## Usage
 `npm run batch 2023-05-09 2023-05-10` to get a single result
+
 `npm run daily 2023-05-09 2023-05-10` to get a result per day
 
 On first usage, a browser window will open for you to select account and agree on using this application. This application uses a readonly permission in google calendar.
 
-The results are aggregated on the first keyword in the calendar event.
+The results are aggregated on the first keyword in the calendar event. My recommendation is to classify your events per categories (work, fun time, exercise...)
 
 ## Example
 
@@ -16,13 +17,15 @@ The results are aggregated on the first keyword in the calendar event.
 ---17:00
 "[#entertainment📺] Watch Netflix"
 ---18:30
+"[#IRL👨] family dinner"
+--21:00
 ```
 
-Results in:
+Result looks like:
 ```
 {
     [#exercise🏋️‍♂️]: 2,
-    [#IRL👨]: 4,
+    [#IRL👨]: 6.5,
     [#entertainment📺]: 1.5
 }
 ```

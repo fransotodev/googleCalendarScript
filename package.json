@@ -6,6 +6,8 @@
   "scripts": {
     "batch": "node index.js batch",
     "daily": "node index.js daily", 
+    "clean": "rm credentials/token.json",
+    "auth": "rm ./credentials/token.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "fransotodev",

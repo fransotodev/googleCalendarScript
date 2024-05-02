@@ -1,32 +1,28 @@
-const process = require("process");
-const { authorize } = require("./modules/auth");
-const { listEvents } = require("./modules/listEvents");
+import process from "process"
 
-function _addDays(date, days) {
-  var result = new Date(date);
-  result.setDate(result.getDate() + days);
-  return result;
-}
+import {authorize} from "./modules/auth.js"
+import {getEvents} from "./infrastructure/googleCalendar.js"
+import {processEvents2D} from "./domain/eventProcessor.js"
+import {printEventsGoogleSheets} from "./infrastructure/googleSheets.js"
+import clipboard from "clipboardy";
+
 
 (async () => {
   const auth = await authorize();
-  const mode = process.argv[2];
-  let start = process.argv[3];
-  const end = process.argv[4];
+  let start = process.argv[2];
+  const end = process.argv[3];
 
-  if (mode === "batch") {
-    console.log(`Batch Result ${start} to ${end}:`);
-    const weeklyResult = await listEvents(auth, start, end);
-    console.log(weeklyResult);
-  }
+  console.log(`Result ${start} to ${end}:`);
+  const weeklyEvents = await getEvents(auth, start, end);
+  // console.log(weeklyEvents);
+  const [processedEvents, unsupportedTags] = processEvents2D(weeklyEvents);
+  const eventsToPrint = printEventsGoogleSheets(processedEvents)
+  console.log(eventsToPrint); //TODO: Pretty-print this in terminal
+  clipboard.writeSync(eventsToPrint)
 
-  if (mode === "daily") {
-    while (start <= end) {
-      const startDate = new Date(start);
-      const result = await listEvents(auth, start);
-      console.log(start);
-      console.log(result);
-      start = _addDays(startDate, 1).toISOString().split("T")[0];
-    }
-  }
+  console.log("== Unsupported tags ==")
+  console.log(unsupportedTags);
+  console.log("== Processed tags ==")
+  console.log(processedEvents);
+
 })();

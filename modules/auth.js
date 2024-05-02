@@ -1,10 +1,10 @@
 // From official quickstart at https://developers.google.com/calendar/api/quickstart/nodejs
 
-const fs = require("fs").promises;
-const path = require("path");
-const process = require("process");
-const { authenticate } = require("@google-cloud/local-auth");
-const { google } = require("googleapis");
+import { promises as fs } from "fs";
+import path from "path";
+import process from "process";
+import { authenticate } from "@google-cloud/local-auth";
+import { google } from "googleapis";
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
@@ -56,7 +56,7 @@ async function saveCredentials(client) {
  * Load or request or authorization to call APIs.
  *
  */
-async function authorize() {
+export async function authorize() {
   let client = await loadSavedCredentialsIfExist();
   if (client) {
     return client;
@@ -70,7 +70,3 @@ async function authorize() {
   }
   return client;
 }
-
-module.exports = {
-  authorize,
-};

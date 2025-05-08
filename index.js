@@ -14,10 +14,9 @@ import clipboard from "clipboardy";
 
   console.log(`Result ${start} to ${end}:`);
   const weeklyEvents = await getEvents(auth, start, end);
-  // console.log(weeklyEvents);
   const [processedEvents, unsupportedTags] = processEvents2D(weeklyEvents);
   const eventsToPrint = printEventsGoogleSheets(processedEvents)
-  console.log(eventsToPrint); //TODO: Pretty-print this in terminal
+  console.log(eventsToPrint);
   clipboard.writeSync(eventsToPrint)
 
   console.log("== Unsupported tags ==")

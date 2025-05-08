@@ -15,6 +15,7 @@
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
     "clipboardy": "^4.0.0",
-    "googleapis": "^105.0.0"
+    "googleapis": "^105.0.0",
+    "markdown-table": "^3.0.4"
   }
 }

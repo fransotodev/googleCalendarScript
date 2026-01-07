@@ -1,5 +1,5 @@
 export const TAGS = [
-  //Contetn Consumption
+  //Content Consumption
   "[#st📚]",
   "[#oc📖]",
   "[#e📺]",
@@ -22,6 +22,7 @@ export const TAGS = [
   "[#irl👨]",
   "[#ch🧹]",
   "[#mi🙈]",
+  "[#dw🧠]",
   "no-tag",
 ];
 
